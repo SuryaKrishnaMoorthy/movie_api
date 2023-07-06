@@ -1,0 +1,10 @@
+[{
+  "id": "1",
+  "name": "Tim",
+  "favoriteMovies": []
+},{
+  "id": "2",
+  "name": "Joe",
+  "favoriteMovies": ["The Godfather"]
+}
+]
