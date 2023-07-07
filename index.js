@@ -25,7 +25,7 @@ app.get("/movies", (req, res) => {
 });
 
 //GET a single movie
-app.get("/movies/:movieTitle", (req, res) => {
+app.get("", (req, res) => {
   const movie = topMovies.find((mov) => mov.title === req.params.movieTitle);
 
   if (movie) {
