@@ -3,7 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style.css" type="text/css" />
     <title>movieSearch</title>
+    <style>
+      body {
+        padding: 30px;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th {
+        padding: 10px;
+      }
+
+      td:first-child {
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <h1>API Requirements</h1>
@@ -28,5 +49,207 @@
       <li>Allow users to remove a movie from their list of favorites</li>
       <li>Allow existing users to deregister</li>
     </ul>
+
+    <h2>API Reference</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Request Method</th>
+          <th>Endpoints</th>
+          <th>Request Body</th>
+          <th>Response Body</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td>
+            <pre>/movies</pre>
+          </td>
+          <td>-</td>
+          <td>
+            <pre>
+[{
+"title": "", 
+"description": "",
+  "genre": { 
+    "name": "..", 
+      "description": "" 
+    }, 
+    "director": {
+        "name": "", 
+        "bio": "" 
+      }, 
+      "rank": "1", 
+      "imageUrl": "",
+      "featured": false, 
+      "id": "" 
+}]
+              </pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>
+            <pre>/movies/:movieTitle</pre>
+          </td>
+          <td>-</td>
+          <td>
+            <pre>
+[{
+"title": "", 
+"description": "",
+  "genre": { 
+    "name": "..", 
+      "description": "" 
+    }, 
+    "director": {
+        "name": "", 
+        "bio": "" 
+      }, 
+      "rank": "1", 
+      "imageUrl": "",
+      "featured": false, 
+      "id": "" 
+}]
+              </pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>
+            <pre>/movies/genre/:genreName</pre>
+          </td>
+          <td>-</td>
+          <td>
+            <pre>
+{
+  "name": "Drama",
+  "description": ""
+}
+              </pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>
+            <pre>/movies/director/:directorName</pre>
+          </td>
+          <td>-</td>
+          <td>
+            <pre>
+{
+  "name": "Frank Darabont",
+  "bio": "",
+  "birth": " "
+}
+              </pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>
+            <pre>/users</pre>
+          </td>
+          <td>-</td>
+          <td>
+            <pre>
+[{
+    "id": "",
+    "name": "",
+    "favoriteMovies": []
+}]
+          </pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>
+            <pre>/users</pre>
+          </td>
+          <td>
+            <pre>
+{
+  "name": "",
+  "favoriteMovies": []
+}
+            </pre>
+          </td>
+          <td>
+            <pre>
+[{
+    "id": "",
+    "name": "",
+    "favoriteMovies": []
+}]
+          </pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td>
+            <pre>/users/:id</pre>
+          </td>
+          <td>
+            <pre>{ "name": "" }</pre>
+          </td>
+          <td>
+            <pre>
+[{
+    "id": "",
+    "name": "",
+    "favoriteMovies": []
+}]
+          </pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td>
+            <pre>/users/:id/:movieId</pre>
+          </td>
+          <td>-</td>
+          <td>
+            <pre>
+The Shawshank Redemption has been added to user 1's favorites
+          </pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>
+            <pre>/users/:id/:movieId</pre>
+          </td>
+          <td>-</td>
+          <td>
+            <pre>
+The Shawshank Redemption has been removed from user 1's favorites
+          </pre
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>
+            <pre>/users/:id</pre>
+          </td>
+          <td>-</td>
+          <td>
+            <pre>
+User has been deregistered
+          </pre
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>

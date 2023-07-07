@@ -3,7 +3,7 @@
       "title": "The Shawshank Redemption",
       "description": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion.",
       "genre": {
-        "name":["Drama"],
+        "name":"Drama",
         "description":"Drama is the specific mode of fiction represented in performance: a play, opera, mime, ballet, etc., performed in a theatre, or on radio or television"
       },
       "director": {
@@ -21,8 +21,8 @@
       "rank": "2",
       "description": "Don Vito Corleone, head of a mafia family, decides to hand over his empire to his youngest son Michael. However, his decision unintentionally puts the lives of his loved ones in grave danger.",
       "genre": {
-        "name": ["Crime, Drama"],
-        "description":"Drama is the specific mode of fiction represented in performance: a play, opera, mime, ballet, etc., performed in a theatre, or on radio or television. Crime drama is a sub-genre of drama that focuses on crimes, the criminals that commit them and the police that catch them."
+        "name": "Drama",
+        "description":"Drama is the specific mode of fiction represented in performance: a play, opera, mime, ballet, etc., performed in a theatre, or on radio or television. "
       },
       "director": {
         "name": "Francis Ford Coppola",
