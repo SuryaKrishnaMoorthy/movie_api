@@ -69,22 +69,27 @@
           <td>-</td>
           <td>
             <pre>
-[{
-"title": "", 
-"description": "",
-  "genre": { 
-    "name": "..", 
-      "description": "" 
-    }, 
-    "director": {
-        "name": "", 
-        "bio": "" 
-      }, 
-      "rank": "1", 
-      "imageUrl": "",
-      "featured": false, 
-      "id": "" 
-}]
+              [
+              {
+                  "Genre": {
+                      "Name": "Thriller",
+                      "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+                  },
+                  "Director": {
+                      "MoviesDirected": [],
+                      "Name": "Jonathan Demme",
+                      "Bio": "Robert Jonathan Demme was an American director, producer, and screenwriter.",
+                      "Birth": "1970-01-01T00:00:01.920Z",
+                      "Death": "1970-01-01T00:00:01.987Z",
+                      "moviesDirected": [
+                          "Beloved Buena",
+                          "The Truth About Charlie",
+                          "The Manchurian Candidate",
+                          "Rachel Getting Married",
+                          "A Master Builder",
+                          "Ricki and the Flash"
+                      ]
+                  },..]
               </pre
             >
           </td>
@@ -97,22 +102,38 @@
           <td>-</td>
           <td>
             <pre>
-[{
-"title": "", 
-"description": "",
-  "genre": { 
-    "name": "..", 
-      "description": "" 
-    }, 
-    "director": {
-        "name": "", 
-        "bio": "" 
-      }, 
-      "rank": "1", 
-      "imageUrl": "",
-      "featured": false, 
-      "id": "" 
-}]
+              {
+                "Genre": {
+                    "Name": "Animated",
+                    "Description": "Animation is a method in which pictures are manipulated to appear as moving images. In traditional animation, images are drawn or painted by hand on transparent celluloid sheets to be photographed and exhibited on film."
+                },
+                "Director": {
+                    "MoviesDirected": [],
+                    "Name": "Rob Minkoff",
+                    "Bio": "Rob Minkoff was born on August 11, 1962 in Palo Alto, California, USA. He is a producer and director, known for The Lion King (1994), Stuart Little 2 (2002) and The Haunted Mansion (2003). He has been married to Crystal Kung Minkoff since September 29, 2007.",
+                    "Birthday": "1962-08-11T00:00:00.000Z",
+                    "moviesDirected": [
+                        "The Lion King",
+                        "Stuart Little",
+                        "Stuart Little 2",
+                        "The Haunted Mansion",
+                        "The Forbidden Kingdom",
+                        "Flypaper"
+                    ]
+                },
+                "_id": "64ad5724477cd1343bf31704",
+                "Title": "The Lion King",
+                "Description": "This Disney animated feature follows the adventures of the young lion Simba.",
+                "ImagePath": "thelionking.png",
+                "Featured": false,
+                "Actors": [
+                    "Matthew Broderick",
+                    "Jeremy Irons",
+                    "James Earl Jones"
+                ],
+                "ReleaseYear": "1994",
+                "Rating": "8.5"
+            }
               </pre
             >
           </td>
@@ -125,10 +146,10 @@
           <td>-</td>
           <td>
             <pre>
-{
-  "name": "Drama",
-  "description": ""
-}
+              {
+                "Name": "Thriller",
+                "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+            }
               </pre
             >
           </td>
@@ -141,11 +162,21 @@
           <td>-</td>
           <td>
             <pre>
-{
-  "name": "Frank Darabont",
-  "bio": "",
-  "birth": " "
-}
+              {
+                "MoviesDirected": [],
+                "Name": "Jonathan Demme",
+                "Bio": "Robert Jonathan Demme was an American director, producer, and screenwriter.",
+                "Birth": "1970-01-01T00:00:01.920Z",
+                "Death": "1970-01-01T00:00:01.987Z",
+                "moviesDirected": [
+                    "Beloved Buena",
+                    "The Truth About Charlie",
+                    "The Manchurian Candidate",
+                    "Rachel Getting Married",
+                    "A Master Builder",
+                    "Ricki and the Flash"
+                ]
+            }
               </pre
             >
           </td>
@@ -158,11 +189,19 @@
           <td>-</td>
           <td>
             <pre>
-[{
-    "id": "",
-    "name": "",
-    "favoriteMovies": []
-}]
+              [
+              {
+                  "_id": "..",
+                  "Username": "..",
+                  "Password": "..",
+                  "Email": "..",
+                  "Birthday": "..",
+                  "FavoriteMovies": [
+                      "64acb018477cd1343bf31702",
+                      "64ad5724477cd1343bf31703",
+                      "64ad5724477cd1343bf3170c"
+                  ]
+              },
           </pre
             >
           </td>
@@ -174,19 +213,29 @@
           </td>
           <td>
             <pre>
-{
-  "name": "",
-  "favoriteMovies": []
-}
+              {
+                "username": "tomsmith",
+                "password": "tom123",
+                "email": "tomsmith@gmail.com",
+                "birthday": "1970-03-28",
+                "FavoriteMovies": [
+                    "64ad5724477cd1343bf3170b",
+                    "64ad5724477cd1343bf3170c"
+                    ]
+              }
             </pre>
           </td>
           <td>
             <pre>
-[{
-    "id": "",
-    "name": "",
-    "favoriteMovies": []
-}]
+              {
+                "Username": "tomsmith",
+                "Password": "tom123",
+                "Email": "tomsmith@gmail.com",
+                "Birthday": "1970-03-28T00:00:00.000Z",
+                "FavoriteMovies": [],
+                "_id": "64af6a7bfee3aec609374d75",
+                "__v": 0
+            }
           </pre
             >
           </td>
@@ -197,15 +246,29 @@
             <pre>/users/:id</pre>
           </td>
           <td>
-            <pre>{ "name": "" }</pre>
+            <pre>
+{
+              "username": "tomsmith123",
+              "password": "tom123",
+              "email": "tomsmith123@gmail.com",
+              "birthday": "1970-03-28"
+          }</pre
+            >
           </td>
           <td>
             <pre>
-[{
-    "id": "",
-    "name": "",
-    "favoriteMovies": []
-}]
+              {
+                "_id": "64af6a7bfee3aec609374d75",
+                "Username": "tomsmith123",
+                "Password": "tom123",
+                "Email": "tomsmith123@gmail.com",
+                "Birthday": "1970-03-28T00:00:00.000Z",
+                "FavoriteMovies": [
+                    "64ad5724477cd1343bf3170b",
+                    "64ad5724477cd1343bf3170c"
+                ],
+                "__v": 0
+            }
           </pre
             >
           </td>
@@ -244,8 +307,7 @@ The Shawshank Redemption has been removed from user 1's favorites
           <td>-</td>
           <td>
             <pre>
-User has been deregistered
-          </pre
+              User tomsmith has been deregistered          </pre
             >
           </td>
         </tr>
