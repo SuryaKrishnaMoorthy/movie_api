@@ -4,7 +4,10 @@ const express = require("express"),
   path = require("path"),
   { v4: uuidv4 } = require("uuid"),
   mongoose = require("mongoose"),
-  bodyParser = require("body-parser");
+  bodyParser = require("body-parser"),
+  cors = require("cors");
+
+const { check, validationResult } = require("express-validator");
 
 const Models = require("./models");
 const topMovies = require("./data/movies.json");
@@ -21,6 +24,9 @@ mongoose.connect("mongodb://localhost:27017/FlicksDB", {
 
 const app = express();
 
+let allowedOrigins = ["http://localhost:8080/", "http://testsite.com"];
+
+app.use(cors()); //allow all domains
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("common"));
@@ -95,29 +101,44 @@ app.get(
   }
 );
 
+//GET all Users
 app.get("/users", (req, res) => {
   Users.find()
     .then((users) => res.status(200).send(users))
     .catch((err) => res.status(404).send("No users found"));
 });
 
+//Create a new User
 app.post(
   "/users",
-  passport.authenticate("jwt", { session: false }),
+  [
+    check("Username", "Username is required").isLength({ min: 5 }),
+    check(
+      "Username",
+      "Username should contain only alphanumeric characters"
+    ).isAlphanumeric(),
+    check("Password", "Password should have minLength 8 and maxLength 20")
+      .not()
+      .isEmpty()
+      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i"),
+    check("Email", "Email needs to be valid").isEmail(),
+    check("Birthday", "Birthday has to be a date").trim().isDate(),
+  ],
   (req, res) => {
-    const { Username, Password, Email, Birthday, FavoriteMovies } = req.body;
-    console.log(req.body);
-    if (!Username || !Password || !Email) {
-      return res.status(400).send("User details required");
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
     }
-
+    const { Username, Password, Email, Birthday, FavoriteMovies } = req.body;
+    let hashedPassword = Users.hashPassword(Password);
+    // let hashedPassword = Password;
     Users.findOne({ Username: Username }).then((user) => {
       if (user) {
         return res.status(400).send(`${Username} already exists`);
       } else {
         const newUser = {
           Username: Username,
-          Password: Password,
+          Password: hashedPassword,
           Email: Email,
           Birthday: new Date(Birthday) || null,
           FavoriteMovies: FavoriteMovies || [],
@@ -139,7 +160,24 @@ app.post(
 app.put(
   "/users/:id",
   passport.authenticate("jwt", { session: false }),
+  [
+    check("Username", "Username is required").isLength({ min: 5 }),
+    check(
+      "Username",
+      "Username should contain only alphanumeric characters"
+    ).isAlphanumeric(),
+    check("Password", "Password should have minLength 8 and maxLength 20")
+      .not()
+      .isEmpty()
+      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i"),
+    check("Email", "Email needs to be valid").isEmail(),
+    check("Birthday", "Birthday has to be a date").trim().isDate(),
+  ],
   (req, res) => {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
     const { id } = req.params;
 
     Users.findOneAndUpdate(
