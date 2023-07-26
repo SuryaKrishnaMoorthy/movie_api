@@ -1,1 +1,5 @@
 node_modules
+
+mongoimport --uri mongodb+srv://ayrus2289:t9edNvFTLW48ahxZ@flicksdb.krxpwbb.mongodb.net/test --collection movies --type json --file ./exportedCollections/movies.json
+
+heroku config:set CONNECTION_URI=mongodb+srv://ayrus2289:t9edNvFTLW48ahxZ@flicksdb.krxpwbb.mongodb.net/?retryWrites=true&w=majority --app flicks-api

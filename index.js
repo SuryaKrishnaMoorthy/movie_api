@@ -22,16 +22,13 @@ const Users = Models.User;
 //   useUnifiedTopology: true,
 // });
 
-mongoose.connect(
-  "mongodb+srv://ayrus2289:t9edNvFTLW48ahxZ@flicksdb.krxpwbb.mongodb.net/?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.CONNECTION_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const app = express();
-
+//
 let allowedOrigins = ["http://localhost:8080/", "http://testsite.com"];
 
 app.use(cors()); //allow all domains
