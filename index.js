@@ -17,6 +17,7 @@ let users = require("./data/users.json");
 const Movies = Models.Movie;
 const Users = Models.User;
 
+// Test commit
 // mongoose.connect("mongodb://localhost:27017/FlicksDB", {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
