@@ -17,6 +17,7 @@ let users = require("./data/users.json");
 const Movies = Models.Movie;
 const Users = Models.User;
 
+// Test commit
 // mongoose.connect("mongodb://localhost:27017/FlicksDB", {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true,
@@ -48,15 +49,11 @@ app.get("/", (req, res) => {
 });
 
 //GET all movies
-app.get(
-  "/movies",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Movies.find()
-      .then((movies) => res.status(200).send(movies))
-      .catch((err) => console.error(err));
-  }
-);
+app.get("/movies", (req, res) => {
+  Movies.find()
+    .then((movies) => res.status(200).send(movies))
+    .catch((err) => console.error(err));
+});
 
 //GET a single movie
 app.get(
