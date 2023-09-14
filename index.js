@@ -49,15 +49,11 @@ app.get("/", (req, res) => {
 });
 
 //GET all movies
-app.get(
-  "/movies",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Movies.find()
-      .then((movies) => res.status(200).send(movies))
-      .catch((err) => console.error(err));
-  }
-);
+app.get("/movies", (req, res) => {
+  Movies.find()
+    .then((movies) => res.status(200).send(movies))
+    .catch((err) => console.error(err));
+});
 
 //GET a single movie
 app.get(
