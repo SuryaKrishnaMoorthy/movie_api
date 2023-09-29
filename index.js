@@ -117,6 +117,17 @@ app.get("/users", (req, res) => {
     .catch((err) => res.status(404).send("No users found"));
 });
 
+//GET one user
+app.get(
+  "/users/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Users.findOne({ _id: req.params.id })
+      .then((user) => res.status(200).send(user))
+      .catch((err) => res.status(404).send("No user found"));
+  }
+);
+
 //Create a new User
 app.post(
   "/users",
@@ -188,13 +199,13 @@ app.put(
       return res.status(422).json({ errors: errors.array() });
     }
     const { id } = req.params;
-
+    let hashedPassword = Users.hashPassword(req.body?.Password);
     Users.findOneAndUpdate(
       { _id: id },
       {
         $set: {
           Username: req.body?.Username,
-          Password: req.body?.Password,
+          Password: hashedPassword,
           Email: req.body?.Email,
           Birthday: req.body?.Birthday,
         },
