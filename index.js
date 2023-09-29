@@ -117,6 +117,17 @@ app.get("/users", (req, res) => {
     .catch((err) => res.status(404).send("No users found"));
 });
 
+//GET one user
+app.get(
+  "/users/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Users.findOne({ _id: req.params.id })
+      .then((user) => res.status(200).send(user))
+      .catch((err) => res.status(404).send("No user found"));
+  }
+);
+
 //Create a new User
 app.post(
   "/users",
