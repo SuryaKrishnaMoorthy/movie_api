@@ -30,7 +30,11 @@ mongoose.connect(process.env.CONNECTION_URI, {
 
 const app = express();
 //
-let allowedOrigins = ["http://localhost:8080/", "http://testsite.com"];
+let allowedOrigins = [
+  "http://localhost:8080/",
+  "http://testsite.com",
+  "https://flickssearch.netlify.app/",
+];
 
 app.use(cors()); //allow all domains
 app.use(bodyParser.json());
