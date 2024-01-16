@@ -36,6 +36,18 @@ let allowedOrigins = [
   "https://flickssearch.netlify.app/",
 ];
 
+/**
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isn’t found on the list of allowed origins
+      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+      return callback(new Error(message), false);
+    }
+    return callback(null, true);
+  }
+}));
+ */
 app.use(cors()); //allow all domains
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -312,6 +324,17 @@ app.delete(
       });
   }
 );
+
+app.delete("/movies/:movieTitle", (req, res) => {
+  Movies.findOneAndDelete({ Title: req.params.movieTitle })
+    .then((movie) => {
+      res.status(200).send(movie);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(404).send("Movie cant be found!");
+    });
+});
 
 app.use((err, req, res, next) => {
   console.log(err);
